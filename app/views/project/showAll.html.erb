@@ -1,0 +1,20 @@
+
+<h1>Listing Projects:</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.Title %></td>
+      <td><%= project.Description %></td>
+
+      <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
+               </td>
+
+    </tr>
+  <% end %>
+</table>

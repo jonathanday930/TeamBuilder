@@ -1,0 +1,18 @@
+<h1>Project#view</h1>
+<p>Find me in app/views/project/view.html.erb</p>
+
+
+<%= form_with scope: :project,:url => {:controller => "project", :action => "create"}, local: true do |form| %>
+  <p>
+    <%= form.label :Title %><br>
+    <%= form.text_field :Title %>
+  </p>
+
+  <p>
+    <%= form.label :Description %><br>
+    <%= form.text_area :Description%>
+  </p>
+
+
+  <%= form.submit %>
+<% end %>
