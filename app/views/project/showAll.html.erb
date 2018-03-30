@@ -1,7 +1,14 @@
 
 <h1>Listing Projects:</h1>
+<%= form_with :url => {:controller => "project", :action => "basic_search"}, local: true do |form| %>
+  <p>
+    <%= form.label :term %><br>
+    <%= form.text_field :term %>
+  </p>
+  <%= form.submit "Search"%>
+<% end %>
 
-<table>
+  <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -14,8 +21,18 @@
 
       <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
                </td>
+
       <td> <%= link_to "Edit ", {:controller => "project", :action => "edit", :id => project.id} %>
       </td>
+
+      <td> <%= link_to "Delete ", {:controller => "project", :action => "destroy", :id => project.id} %>
+      </td>
+
     </tr>
   <% end %>
+
+
 </table>
+
+
+<td> <%= link_to "Create new Project ", {:controller => "project", :action => "new"} %>

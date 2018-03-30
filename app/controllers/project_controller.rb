@@ -30,7 +30,7 @@ def edit
 end
 
 
-def updateProject
+def update
     @project = Project.find(params[:id])
     @project.update_attributes(proj_params)
     # newProject.Title=params[:project][:title]
@@ -40,6 +40,17 @@ def updateProject
 
 
     redirect_to action: "showAll"
+end
+
+def destroy
+  Project.find(params[:id]).destroy
+  redirect_to action:"showAll"
+end
+
+
+def basic_search
+  @projects = Project.where(["Title LIKE "'?'" OR Description LIKE "'?'"", "%#{params[:term].gsub("'", "''")}%", "%#{params[:term].gsub("'", "''")}%" ])
+  render "showAll"
 end
 
 
