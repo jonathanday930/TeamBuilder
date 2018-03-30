@@ -14,7 +14,8 @@
 
       <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
                </td>
-
+      <td> <%= link_to "Edit ", {:controller => "project", :action => "edit", :id => project.id} %>
+      </td>
     </tr>
   <% end %>
 </table>

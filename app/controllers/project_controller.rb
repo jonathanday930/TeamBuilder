@@ -24,10 +24,23 @@ def create
   end
 
 def edit
-  
+  @project = Project.find(params[:id])
+
 
 end
 
+
+def updateProject
+    @project = Project.find(params[:id])
+    @project.update_attributes(proj_params)
+    # newProject.Title=params[:project][:title]
+    #puts (params[:title])
+    #newProject.Description=params[:project][:description]
+
+
+
+    redirect_to action: "showAll"
+end
 
 
 
