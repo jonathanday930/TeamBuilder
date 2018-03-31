@@ -1,0 +1,11 @@
+<%= form_with :url => {:controller => "project", :action => "basic_search"}, local: true do |form| %>
+  <p>
+    <%= form.label :term %><br>
+    <%= form.text_field :term %>
+  </p>
+  <%= form.submit "Search"%>
+<% end %>
+
+
+
+

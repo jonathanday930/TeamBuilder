@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'project/new'
   post 'project/new'
   post 'project/edit/:id' => 'project#edit'
   post 'project/update/:id' => 'project#update'
   post 'project/basic_search' => 'project#basic_search'
 
-  get 'project/destroy/:id' => 'project#destroy'
+
+  get 'project/new'
+  post 'project/destroy/:id' => 'project#destroy'
   get 'project/showAll'
   get 'project/show/:id' => 'project#show'
   get 'project/edit/:id' => 'project#edit'
