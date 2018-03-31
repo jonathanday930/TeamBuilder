@@ -12,12 +12,16 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Hours per week required</th>
+    <th>Weeks required to complete project</th>
   </tr>
 
   <% @projects.each do |project| %>
     <tr>
       <td><%= project.Title %></td>
       <td><%= project.Description %></td>
+      <td><%= project.HoursPerWeek%></td>
+      <td><%= project.WeeksInProject%></td>
 
       <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
                </td>

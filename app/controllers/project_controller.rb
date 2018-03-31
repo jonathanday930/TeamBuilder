@@ -57,7 +57,7 @@ end
 
   private
   def proj_params
-    params.require(:project).permit(:Title, :Description)
+    params.require(:project).permit(:Title, :Description, :HoursPerWeek,:WeeksInProject)
   end
 end
 
