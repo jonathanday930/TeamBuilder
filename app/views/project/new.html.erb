@@ -13,12 +13,19 @@
     <%= form.text_area :Description%>
   </p>
 
-
   <p>
     <%= form.label "Hours Per Week"%><br>
     <%= form.text_area :HoursPerWeek%>
   </p>
 
+<p>
+  <% @skills.each do |skill|%>
+
+  <%= form.label skill[:SkillName]%><br>
+  <%= form.check_box skill[:SkillName]%> <br>
+    <br>
+  <% end %>
+</p>
 
   <p>
     <%= form.label "Weeks needed"%><br>

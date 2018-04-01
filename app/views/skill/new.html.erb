@@ -1,0 +1,10 @@
+
+<%= form_with scope: :skill,:url => {:controller => "skill", :action => "create"}, local: true do |form| %>
+  <p>
+    <%= form.label :SkillName %><br>
+    <%= form.text_field :SkillName %>
+  </p>
+
+
+  <%= form.submit %>
+<% end %>

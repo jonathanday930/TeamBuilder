@@ -1,6 +1,7 @@
 class ProjectController < ApplicationController
 def new
-
+  @skills = Skill.all
+  puts @skills.size
 end
 
 def show
@@ -59,6 +60,12 @@ end
   def proj_params
     params.require(:project).permit(:Title, :Description, :HoursPerWeek,:WeeksInProject)
   end
+
+def calculate_skill_number
+
+
+end
+
 end
 
 
