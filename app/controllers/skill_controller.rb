@@ -5,7 +5,8 @@ class SkillController < ApplicationController
 
     new_skill = Skill.new(:SkillName => params[:skill][:SkillName], :PrimeId => generate_next_prime)
     new_skill.save
-  if :params[:return_to_new] == "1"
+  if params[:return_to_new].present?
+    @skills = Skill.all
     render ('project/new')
   else
     render ('skill/new')
