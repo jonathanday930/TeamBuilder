@@ -25,7 +25,19 @@
   <%= form.check_box skill[:SkillName]%> <br>
     <br>
   <% end %>
+
 </p>
+  <%= form_with scope: :skill,:url => {:controller => "skill", :action => "create", :return_to_new => "1"}, local: true do |form| %>
+
+    <p>
+  <%= form.label "Add a skill"%><br>
+  <%= form.text_area :SkillName%>
+</p>
+
+    <%= form.submit %>
+
+  <% end%>
+
 
   <p>
     <%= form.label "Weeks needed"%><br>

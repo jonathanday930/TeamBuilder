@@ -2,12 +2,17 @@ require 'prime'
 class SkillController < ApplicationController
 
   def create
-    puts Skill.all.count
 
     new_skill = Skill.new(:SkillName => params[:skill][:SkillName], :PrimeId => generate_next_prime)
     new_skill.save
+  if :params[:return_to_new] == "1"
+    render ('project/new')
+  else
     render ('skill/new')
   end
+  end
+
+
 
   private
   def skill_params_input

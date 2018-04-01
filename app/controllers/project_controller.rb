@@ -12,15 +12,22 @@ def show
   puts @project.Title
 end
 def showAll
-    @projects = Project.all
+  @skills = Skill.all
+  @projects = Project.all
 end
 
 def create
-    @project = Project.new(proj_params)
-   # newProject.Title=params[:project][:title]
+    new_project = Project.new()
+    new_project.Title = params[:project][:Title]
+    new_project.Description = params[:project][:Description]
+    new_project.HoursPerWeek = params[:project][:HoursPerWeek]
+    new_project.WeeksInProject= params[:project][:WeeksInProject]
+    new_project.SkillsRequired= calculate_skill_number
+    new_project.save
+
+    # newProject.Title=params[:project][:title]
     #puts (params[:title])
     #newProject.Description=params[:project][:description]
-    @project.save
     redirect_to action: "showAll"
   end
 
@@ -62,8 +69,14 @@ end
   end
 
 def calculate_skill_number
+@prime_num = 1
 
-
+    Skill.all.each do |skill|
+    if params[:project][skill[:SkillName]].to_i == 1
+      @prime_num = @prime_num * skill[:PrimeId]
+    end
+  end
+  return @prime_num
 end
 
 end

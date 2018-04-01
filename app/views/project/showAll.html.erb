@@ -14,6 +14,12 @@
     <th>Text</th>
     <th>Hours per week required</th>
     <th>Weeks required to complete project</th>
+
+      <% @skills.each do |skill|%>
+
+      <th>  <%= skill[:SkillName]%></th>
+    <% end %>
+
   </tr>
 
   <% @projects.each do |project| %>
@@ -22,6 +28,17 @@
       <td><%= project.Description %></td>
       <td><%= project.HoursPerWeek%></td>
       <td><%= project.WeeksInProject%></td>
+
+      <% @skills.each do |skill|%>
+        <% if project[:SkillsRequired].to_i % skill[:PrimeId].to_i == 0%>
+        <% @current_test = "yes"%>
+        <% else @current_test = "no"%>
+        <% end%>
+
+        <td>  <%= @current_test%></td>
+      <% end %>
+
+
 
       <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
                </td>
