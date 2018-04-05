@@ -1,0 +1,20 @@
+body{
+
+    background: white;
+}
+
+
+.projectCard{
+    width: 48%;
+    background: grey;
+
+
+    margin: 2% auto;
+}
+
+
+.project {
+    padding: 5%;
+    margin: 0 auto ;
+
+}

@@ -1,4 +1,5 @@
-
+<%= stylesheet_link_tag "showProjects" %>
+<body>
 <h1>Listing Projects:</h1>
 <%= form_with :url => {:controller => "project", :action => "basic_search"}, local: true do |form| %>
   <p>
@@ -8,58 +9,52 @@
   <%= form.submit "Search"%>
 <% end %>
 
-  <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Hours per week required</th>
-    <th>Weeks required to complete project</th>
 
-      <% @skills.each do |skill|%>
 
-      <th>  <%= skill[:SkillName]%></th>
-    <% end %>
+<% @projects.each do |project| %>
 
-  </tr>
-
-  <% @projects.each do |project| %>
-    <tr>
-      <td><%= project.Title %></td>
-      <td><%= project.Description %></td>
-      <td><%= project.HoursPerWeek%></td>
-      <td><%= project.WeeksInProject%></td>
-
-      <% @skills.each do |skill|%>
-        <% if project[:SkillsRequired].to_i % skill[:PrimeId].to_i == 0%>
-        <% @current_test = "yes"%>
-        <% else @current_test = "no"%>
-        <% end%>
-
-        <td>  <%= @current_test%></td>
-      <% end %>
+<div class = "projectCard">
+<div class = "project">
 
 
 
-      <td> <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
+
+
+  <h1> Title:  <%= project.Title %> </h1>
+  <h1> Description:  <%= project.Description %> </h1>
+  <h1> Hours per week required:  <%=  project.HoursPerWeek %>  </h1>
+  <h1> Hours per week required:  <%=  project.WeeksInProject %>  </h1>
+<h1> Skills required:</h1>
+<h2>
+  <% @skills.each do |skill|%>
+    <% if project[:SkillsRequired].to_i % skill[:PrimeId].to_i == 0%>
+     - <%=  skill.SkillName%>
+      <br/>
+    <% end%>
+
+  <% end %>
+</h2>
+
+
+
+      <%= link_to "View ", {:controller => "project", :action => "show", :id => project.id} %>
                </td>
 
-      <td> <%= link_to "Edit ", {:controller => "project", :action => "edit", :id => project.id} %>
-      </td>
+      <%= link_to "Edit ", {:controller => "project", :action => "edit", :id => project.id} %>
 
-      <td> <%= form_with :url => {:controller => "project", :action => "destroy",:id => project.id}, local: true do |form| %>
+
+      <%= form_with :url => {:controller => "project", :action => "destroy",:id => project.id}, local: true do |form| %>
           <%= form.submit "Delete"%>
         <% end %>
 
+</div>
+</div>
 
-
-
-      </td>
-
-    </tr>
-  <% end %>
+<% end %>
 
 
 </table>
 
 
 <td> <%= link_to "Create new Project ", {:controller => "project", :action => "new"} %>
+</body>

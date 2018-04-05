@@ -58,6 +58,7 @@ end
 
 def basic_search
   @projects = Project.where(["Title LIKE "'?'" OR Description LIKE "'?'"", "%#{params[:term].gsub("'", "''")}%", "%#{params[:term].gsub("'", "''")}%" ])
+  @skills = Skill.all
   render "showAll"
 end
 
